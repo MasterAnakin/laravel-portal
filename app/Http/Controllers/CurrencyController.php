@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CurrencyController extends Controller{
-    public function Milos() {
+    public static function Milos() {
 /*
         $mandolorianQuotes = [
             "This is the way.",
