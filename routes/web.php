@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Http\Controllers\CurrencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,11 @@ Route::get('posts/{post}', function ( $id ) {
 	}
 );
 
+Route::get('/test', function () {
+		return view( 'test', ['decode_response' => CurrencyController::milos()
+	]);
+});
 
 
-
-Route::get('/test', 'App\Http\Controllers\CurrencyController@milos');
+//Route::get('/test', 'App\Http\Controllers\CurrencyController@milos');
 //Route::get('test', 'CurrencyController@milos');

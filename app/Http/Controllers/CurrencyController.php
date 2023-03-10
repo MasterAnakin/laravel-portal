@@ -52,6 +52,7 @@ curl_setopt_array(
 );
 
 $response = curl_exec( $curl );
-return $response;          
+$decode_response = json_decode( $response, true ); 
+return $decode_response;         
     }
 }
