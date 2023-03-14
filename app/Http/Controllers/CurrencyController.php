@@ -7,33 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class CurrencyController extends Controller{
     public static function Milos() {
-/*
-        $mandolorianQuotes = [
-            "This is the way.",
-            "I have spoken.",
-            "I am no Jedi.",
-            "I will not be the one to ignite it.",
-            "I have lived long enough to see the same eyes in different people.",
-            "I have spoken.",
-            "This is the way.",
-            "Peace is a lie, there is only passion.",
-            "Through passion, I gain strength.",
-            "Through strength, I gain power.",
-            "Through power, I gain victory.",
-            "Through victory, my chains are broken.",
-            "The Force shall free me."
-          ];
-        $k = array_rand($mandolorianQuotes, 1);
-        $one = $mandolorianQuotes[$k];
-        $ss = json_encode($one);
-          return $ss;
-*/
-
-
 
 
 $query         = array(
     'archived' => 'false',
+    'order_by' => 'id',
+    'reverse' => 'true',
 );
 
 $curl = curl_init();
@@ -45,7 +24,7 @@ curl_setopt_array(
             'Authorization: pk_57096564_GTODYU5KD1U0D88DUOM38H5NDTFI8DBA',
             'Content-Type: application/json',
         ),
-        CURLOPT_URL            => 'https://api.clickup.com/api/v2/folder/134388839/list?' . http_build_query( $query ),
+        CURLOPT_URL            => 'https://api.clickup.com/api/v2/list/188299270/task?' . http_build_query( $query ),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_CUSTOMREQUEST  => 'GET',
     )
@@ -53,6 +32,43 @@ curl_setopt_array(
 
 $response = curl_exec( $curl );
 $decode_response = json_decode( $response, true ); 
-return $decode_response;         
+return $decode_response;   
+//print_r($decode_response);      
     }
+
+    public static function valet_get_single_client($id) {
+
+
+
+$query = array(
+  "custom_task_ids" => "true",
+);
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_HTTPHEADER => [
+    "Authorization: pk_57096564_GTODYU5KD1U0D88DUOM38H5NDTFI8DBA",
+    "Content-Type: application/json"
+  ],
+  CURLOPT_URL => "https://api.clickup.com/api/v2/task/" . $id . "?" . http_build_query($query),
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_CUSTOMREQUEST => "GET",
+]);
+
+$response2 = curl_exec($curl);
+$error = curl_error($curl);
+
+
+
+$decode_response2 = json_decode( $response2, true ); 
+print_r($decode_response2);   
+
+
+
+  
+    }
+
 }
+
+

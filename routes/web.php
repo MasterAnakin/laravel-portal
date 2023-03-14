@@ -33,6 +33,12 @@ Route::get('/test', function () {
 	]);
 });
 
+Route::get('client/{id}', function ( $id ) {
+		return view('client', [
+			'client' => CurrencyController::valet_get_single_client($id)
+		]);
 
+	}
+);
 //Route::get('/test', 'App\Http\Controllers\CurrencyController@milos');
 //Route::get('test', 'CurrencyController@milos');

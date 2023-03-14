@@ -5,7 +5,7 @@
 @foreach ($first_array as $single_client_value)
 
 
-	  <option value="{{$single_client_value['id']}}">{{$single_client_value['name']}}</option>
+	  <a href="client/{{$single_client_value['id']}}">{{$single_client_value['name']}}</a><br>
 
 @endforeach
 @endforeach
