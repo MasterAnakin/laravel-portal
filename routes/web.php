@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CurrencyController;
 
 /*
@@ -40,5 +41,6 @@ Route::get('client/{id}', function ( $id ) {
 
 	}
 );
-//Route::get('/test', 'App\Http\Controllers\CurrencyController@milos');
+Route::get('register', [RegisterController::class, 'create']);
+Route::post('register', [RegisterController::class, 'store']);
 //Route::get('test', 'CurrencyController@milos');
